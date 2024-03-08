@@ -12,8 +12,7 @@ Lorem Ipsium Dol der sit amot
 # Insert solution code
 ```
 Stats:
-    - Runtime XXms
-    - Memory: XXMB
-    - Ranking: Top XX%
+    - Runtime XXms | Beats: XX.XX%
+    - Memory: XXMB | Beats: XX.XX%
 
 Time complexity: O(TIME_COMPLEXITY)
