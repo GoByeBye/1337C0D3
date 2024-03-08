@@ -21,6 +21,9 @@ create_file() {
     # Replace the task number and title in the file
     sed -i "s/TASK_NUMBER/${task_number}/g" ../$new_folder/README.md
     sed -i "s/TASK_TITLE/${task_title}/g" ../$new_folder/README.md
+
+    touch ../$new_folder/solution.py
+    echo "Created solution.py"
 }
 
 main() {
