@@ -29,10 +29,10 @@ Constraints:
 *Solution 1 - Simple but efficient*
 I surprisingly struggled so much trying to do this *I lost focus and scrolled social media for 15 minutes*
 
-So, I fully forgot how to check for duplicates in Python since I work mostly with PHP(ew) my daily life.
+So, I fully forgot how to check for duplicates in Python since I work mostly with PHP(*ew*) my daily life.
 I kept on trying to find something simlar to PHP's array_unique which obviously wasn't really working out for me.
 
-After some Googling I found out you can compare the length of `set(nums)` to the length of `$nums` to somewhat replcite array_unique.
+After some Googling I found out you can compare the length of `set(nums)` to the length of `$nums` to somewhat replicate array_unique.
 
 ```Python
 class Solution:
