@@ -37,44 +37,103 @@ Within like 30 seconds I realized I could just sort both arrays and compare them
 
 So I did just that
 
-*Solution 1 - Using Counter*
+*Solution 1 - Sorting strings*
 
-This was way easier than I expected. But the code is a little unreadable
-```Python
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        return Counter(s) == Counter(t)
+This was way easier than I expected, and the code is actually surprisingly really readable
+```cpp
+class Solution {
+public:
+    bool isAnagram(string source, string anagram) {
+        std::sort(source.begin(), source.end());
+        std::sort(anagram.begin(), anagram.end());
+        return source == anagram;
+    }
+};
 ```
 
 
 Stats:
-    - Runtime 40ms | Beats 92.14%
-    - Memory: 17MB | Beats 48.51%
+    - Runtime 6ms | Beats 80.57%
+    - Memory: 8.57MB | Beats 49.23%
 
-Time complexity: O(n)
+Time complexity: O(n log n)
 
-*Solution 2 - Readability*
-Very little had to be done. For some reason this is getting better stats overall I really think it shouldn't
+*Solution 2 - Cheating*
+
+After submitting my first solution I took a look at what better perorming submissions had done.
+I'm no coding god so the top 0.1% was unachivable for me. But by the looks of it I could "cheat".
+This is because a lot of people came to the same conclusion as me with sorting the strings, but
+instead of doing just that they added an if check at the front seeing if the string size is the same
+(honestly wish I thought of that). Turns out that's not as efficient though depending on the input.
+Adding an if statement at the top actually lowered my performance by around 100% (*twice as slow*).  
+Anyways here's the code for those of you who are interested. (Why are you even here reading this?)
 
 ```python
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        source_word = s
-        potential_anagram = t
+class Solution {
+public:
+    bool isAnagram(string source, string anagram) {
+        if (source.size() != anagram.size()) {
+            return false;
+        }
 
-        return Counter(source_word) == Counter(potential_anagram)
+        std::sort(source.begin(), source.end());
+        std::sort(anagram.begin(), anagram.end());
+        return source == anagram;
+    }
+};
 ```
 
 Stats:
-    - Runtime: 38ms | Beats 95.25%
-    - Memory: 16.91MB | Beats 72.84%
+    - Runtime: 6ms | Beats 80.57%
+    - Memory: 8.57MB | Beats 49.23%
+
+Time complexity: O(n log n)
+
+*Solution 3 - Optimization*
+
+I still wasn't satified with what I got. O(n log n) could not possibly be the fastest way to do this.
+After sleeping on the problem (I'm writing this the next day). I realized we could just count how many
+times a character pops up. If it's the same in both it's an anagram! Seriously can't believe I didn't
+come up with this from the get go.
+
+I also added comments for readability's sake
+<!-- TODO: Future me: Were the comments practically uesless and just bloat? -->
+```cpp
+class Solution {
+public:
+    bool isAnagram(string source, string anagram) {
+        if (source.size() != anagram.size()) {
+            return false;
+        }
+
+        // Latin alphabet has 26 characters
+        int count[26] = {0};
+
+        for (int index = 0; index < source.size(); index++) {
+            count[source[index] - 'a']++; // Add character to count
+            count[anagram[index] - 'a']--; // Remove character from count
+        }
+
+        // Check if all counts are zero
+        for (int i : count) {
+            if (i != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
+```
+
+Stats:
+    - Runtime: 4ms | Beats 90.04%
+    - Memory: 8.45MB | Beats 68.62%
+
+Time complexity: O(n)
 
 
 ## Follup up question
 *See bottom of the task for the question*
-
-
-So from my understanding we'd be getting raw Unicode characters. I'm like 70% sure we could just run a `bytes.decode(CHARSET)`
-where `CHARSET` is most likely UTF-8 if it's a modern system. I honestly don't know though
 
 <!-- TODO: Revisit this and see if you're smarter in the future -->
