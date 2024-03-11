@@ -36,7 +36,7 @@ Beginning with this problem I could also cheat like last time by looking at what
 
 *Solution 1 - Looking back at Python*
 
-Honestly this one wasn't that bad all things considered,it was mroe a case of how do I do this in C++
+Honestly this one wasn't that bad all things considered, it was more a case of how do I do this in C++
 
 If you look at the code you can clearly see I took some inspiration from my earlier Python solution.
 Interesting thing about C++ though is that you can rather easily work backwards on an array by reversing the index.
