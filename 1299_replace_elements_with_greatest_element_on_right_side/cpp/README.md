@@ -34,7 +34,7 @@ Constraints:
 Beginning with this problem I could also cheat like last time by looking at what I did in Python.
 
 
-*Solution X - Description*
+*Solution 1 - Looking back at Python*
 
 Honestly this one wasn't that bad all things considered,it was mroe a case of how do I do this in C++
 
