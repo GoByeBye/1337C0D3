@@ -84,8 +84,8 @@ public:
 ```
 
 Stats:
-    - Runtime: 6ms | Beats 80.57%
-    - Memory: 8.57MB | Beats 49.23%
+    - Runtime: 13ms | Beats 25.24%
+    - Memory: 8.61MB | Beats 35.50%
 
 Time complexity: O(n log n)
 
